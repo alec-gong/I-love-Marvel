@@ -28,8 +28,9 @@ class CharacterAdapter(private val characterList: List<String>): RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val imageUrl = characterList[position]
         Glide.with(holder.itemView)
-            .load(characterList[position])
+            .load(imageUrl)
             .centerCrop()
             .into(holder.characterImage)
     }

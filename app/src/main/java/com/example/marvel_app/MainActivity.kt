@@ -61,9 +61,11 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         // initialize adapter
-                        val adapter = CharacterAdapter(characterList)
-                        rvCharacters.adapter = adapter
-                        rvCharacters.layoutManager = LinearLayoutManager(this@MainActivity)
+                        runOnUiThread{
+                            val adapter = CharacterAdapter(characterList)
+                            rvCharacters.adapter = adapter
+                            rvCharacters.layoutManager = LinearLayoutManager(this@MainActivity)
+                        }
 
                     } catch(e: JSONException) {
                         Log.e("API error", "Error parsing JSON: ${e.message}")
