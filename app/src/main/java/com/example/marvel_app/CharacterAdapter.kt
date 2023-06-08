@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class CharacterAdapter(private val characterList: List<String>): RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -27,7 +28,10 @@ class CharacterAdapter(private val characterList: List<String>): RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("not yet implemented")
+        Glide.with(holder.itemView)
+            .load(characterList[position])
+            .centerCrop()
+            .into(holder.characterImage)
     }
 
 }
