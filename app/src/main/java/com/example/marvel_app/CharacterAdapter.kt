@@ -23,7 +23,12 @@ class CharacterAdapter(private val characterList: List<CharacterModel>): Recycle
     interface OnItemClickListener {
         fun onItemClick(character: CharacterModel)
     }
+
     private var onItemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        onItemClickListener = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
