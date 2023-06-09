@@ -19,6 +19,17 @@ class CharacterAdapter(private val characterList: List<CharacterModel>): Recycle
         }
     }
 
+    // Define a listener interface for image clicks
+    interface OnItemClickListener {
+        fun onItemClick(character: CharacterModel)
+    }
+
+    private var onItemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        onItemClickListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.character_item, parent, false)
@@ -39,6 +50,11 @@ class CharacterAdapter(private val characterList: List<CharacterModel>): Recycle
             .into(holder.characterImage)
 
         holder.characterName.text = character.characterName
+
+        // Set click listener for image view
+        holder.characterImage.setOnClickListener {
+            onItemClickListener?.onItemClick(character)
+        }
     }
 
 }
