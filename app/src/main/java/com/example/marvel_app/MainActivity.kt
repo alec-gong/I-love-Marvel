@@ -14,7 +14,7 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var characterList: MutableList<String>
+    private lateinit var characterList: MutableList<CharacterModel>
     private lateinit var rvCharacters: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,8 +55,9 @@ class MainActivity : AppCompatActivity() {
                             val thumbnailPath = thumbnail.getString("path")
                             if(!thumbnailPath.endsWith("image_not_available")){
                                 val imageUrl = thumbnailPath + "." + thumbnail.getString("extension")
+                                val characterModel = CharacterModel(imageUrl, name)
                                 // add to character list
-                                characterList.add(imageUrl)
+                                characterList.add(characterModel)
                             }
                         }
 

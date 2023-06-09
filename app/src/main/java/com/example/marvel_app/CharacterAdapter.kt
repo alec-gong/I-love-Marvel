@@ -4,15 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class CharacterAdapter(private val characterList: List<String>): RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
+class CharacterAdapter(private val characterList: List<CharacterModel>): RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val characterImage: ImageView
+        val characterName: TextView
 
         init{
             characterImage = view.findViewById(R.id.character_image)
+            characterName = view.findViewById(R.id.character_name)
         }
     }
 
@@ -28,11 +31,14 @@ class CharacterAdapter(private val characterList: List<String>): RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val imageUrl = characterList[position]
+        val character = characterList[position]
+
         Glide.with(holder.itemView)
-            .load(imageUrl)
+            .load(character.characterImage)
             .centerCrop()
             .into(holder.characterImage)
+
+        holder.characterName.text = character.characterName
     }
 
 }

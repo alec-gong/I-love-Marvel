@@ -33,6 +33,7 @@ class MarvelApiClient {
             .addQueryParameter("ts", timestamp)
             .addQueryParameter("apikey", publicKey)
             .addQueryParameter("hash", hash)
+            .addQueryParameter("limit", "100")
             .build()
     }
 
