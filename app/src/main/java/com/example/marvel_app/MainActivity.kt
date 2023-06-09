@@ -48,7 +48,14 @@ class MainActivity : AppCompatActivity() {
 
                             val character = results.getJSONObject(i)
                             val name = character.getString("name")
-                            val description = character.getString("description")
+
+                            // get description; uses filler if none
+                            val description: String
+                            if(character.getString("description") == ""){
+                                description = "No description at the moment."
+                            } else {
+                                description = character.getString("description")
+                            }
 
                             // filter out characters without images
                             val thumbnail = character.getJSONObject("thumbnail")
