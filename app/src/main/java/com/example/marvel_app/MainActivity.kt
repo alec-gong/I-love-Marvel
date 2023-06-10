@@ -23,11 +23,11 @@ class MainActivity : AppCompatActivity() {
         characterList = mutableListOf()
         rvCharacters = findViewById(R.id.character_list)
 
-        val letter = intent.getStringExtra("letter")
+        val query = intent.getStringExtra("query")
 
         val marvelApiClient = MarvelApiClient()
-        if (letter != null) {
-            marvelApiClient.fetchCharacters(letter, object: Callback {
+        if (query != null) {
+            marvelApiClient.fetchCharacters(query, object: Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     Log.d("API error", e.toString())
                 }
