@@ -10,8 +10,8 @@ class MarvelApiClient {
     private val publicKey = "ec29073fe4d61d620e8503f63861130f"
     private val privateKey = "fb0e4a00da149fc36e4fa02398d392839c426683"
 
-    fun fetchCharacters(callback: Callback){
-        val url = buildUrl("/v1/public/characters")
+    fun fetchCharacters(letter: String, callback: Callback){
+        val url = buildUrl(letter,"/v1/public/characters")
 
         val client = OkHttpClient()
         val request = Request.Builder()
@@ -22,7 +22,7 @@ class MarvelApiClient {
     }
 
     // helper function: build API request URL
-    private fun buildUrl(path: String): HttpUrl{
+    private fun buildUrl(letter: String, path: String): HttpUrl{
         val timestamp = System.currentTimeMillis().toString()
         val hash = generateHash(timestamp)
 
@@ -34,6 +34,7 @@ class MarvelApiClient {
             .addQueryParameter("apikey", publicKey)
             .addQueryParameter("hash", hash)
             .addQueryParameter("limit", "100")
+            .addQueryParameter("nameStartsWith", letter)
             .build()
     }
 
@@ -44,6 +45,4 @@ class MarvelApiClient {
         val digest = md5.digest(input.toByteArray())
         return digest.joinToString("") { "%02x".format(it) }
     }
-
-
 }
