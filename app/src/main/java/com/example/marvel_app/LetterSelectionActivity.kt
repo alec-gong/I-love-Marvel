@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 class LetterSelectionActivity: AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class LetterSelectionActivity: AppCompatActivity() {
             findViewById(R.id.btn_E),
             findViewById(R.id.btn_F),
             findViewById(R.id.btn_G),
-            findViewById(R.id.btn_G),
+            findViewById(R.id.btn_H),
             findViewById(R.id.btn_I),
             findViewById(R.id.btn_J),
             findViewById(R.id.btn_K),
@@ -39,6 +40,10 @@ class LetterSelectionActivity: AppCompatActivity() {
             findViewById(R.id.btn_Y),
             findViewById(R.id.btn_Z)
         )
+        val color = ContextCompat.getColor(this, R.color.marvel_red)
+        for(button in letterButtons){
+            button.setBackgroundColor(color)
+        }
 
         // Set click listeners for each letter button
         for (button in letterButtons) {
