@@ -44,6 +44,4 @@ class MarvelApiClient {
         val digest = md5.digest(input.toByteArray())
         return digest.joinToString("") { "%02x".format(it) }
     }
-
-
 }
