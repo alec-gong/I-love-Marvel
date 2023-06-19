@@ -49,7 +49,7 @@ class LetterSelectionActivity: AppCompatActivity() {
         for (button in letterButtons) {
             button.setOnClickListener {
                 val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("letter", button.text.toString())
+                intent.putExtra("query", button.text.toString())
                 startActivity(intent)
             }
         }

@@ -15,8 +15,9 @@
         android:theme="@style/Theme.Marvel_App"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
-            android:name=".LetterSelectionActivity"
+            android:name=".HomePageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,10 +25,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SearchActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".LetterSelectionActivity"
+            android:exported="true">
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+
         <activity
             android:name=".CharacterDetailsActivity"
             android:exported="true">

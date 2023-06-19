@@ -22,7 +22,7 @@ class MarvelApiClient {
     }
 
     // helper function: build API request URL
-    private fun buildUrl(letter: String, path: String): HttpUrl{
+    private fun buildUrl(query: String, path: String): HttpUrl{
         val timestamp = System.currentTimeMillis().toString()
         val hash = generateHash(timestamp)
 
@@ -34,7 +34,7 @@ class MarvelApiClient {
             .addQueryParameter("apikey", publicKey)
             .addQueryParameter("hash", hash)
             .addQueryParameter("limit", "100")
-            .addQueryParameter("nameStartsWith", letter)
+            .addQueryParameter("nameStartsWith", query)
             .build()
     }
 
